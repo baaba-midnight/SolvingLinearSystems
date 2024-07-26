@@ -19,7 +19,7 @@ def input_matrix():
 
 	# initialise an empty matrix
 	matrix = []
-
+ 
 	# gether input for each row
 	for i in range(rows):
 		# ask user to input the elements of the current row
