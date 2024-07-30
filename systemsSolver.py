@@ -172,7 +172,6 @@ def graph(solution_vector, basis_vectors, translation_vector):
 	# check if vector is in R2 or R3
 	if (solution_vector is None) and (basis_vectors is None) and (translation_vector is None):
 		print("The system is inconsistent")
-		return
 	elif len(solution_vector) == 2:
 		# plot in 2D
 		plot2D.plot2D(solution_vector, basis_vectors, translation_vector)

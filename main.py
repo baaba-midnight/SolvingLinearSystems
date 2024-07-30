@@ -102,8 +102,23 @@ def main():
 	print("-----------------------------------------------------------")
 
 	# automatically plot 3D or 2D
-	systemsSolver.graph(solution_vector, basis_vectors, translation_vector)
-
+	isNonHomoConsistent = False
+	# plot for non homogeneous if existent
+	if solution_vector is not None:
+		systemsSolver.graph(solution_vector, basis_vectors, translation_vector)
+		isNonHomoConsistent = True
+		
+	# plot for homogeneous only if non homogeneous is inconsistent
+	if not isNonHomoConsistent:
+		# get solution of Ax=0
+		results = systemsSolver.gauss_jordan_partial_pivot(matrix)
+		print("RREF of [A 0]")
+		print(results)
+		print("-----------------------------------------------------------")
+		systemsSolver.print_solution(results)
+		solution_vector, basis_vectors, translation_vector = systemsSolver.get_solution_set(results)
+		systemsSolver.graph(solution_vector, basis_vectors, translation_vector)
+		
 
 if __name__ == '__main__':
 	main()
